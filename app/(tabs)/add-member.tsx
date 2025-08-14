@@ -225,7 +225,7 @@ addButtonText: {
   modalContainer: { flex: 1, justifyContent: "center", backgroundColor: "rgba(0,0,0,0.3)" },
   modalContent: { margin: 20, backgroundColor: "#fff", padding: 20, borderRadius: 10 },
   modalTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 10 },
-  input: { borderWidth: 1, borderColor: "#ccc", marginVertical: 8, padding: 10, borderRadius: 5 },
+  input: { borderWidth: 1, borderColor: "#ccc", marginVertical: 8, padding: 10, borderRadius: 5,color: "#000"}, // text color },
   buttonRow: { flexDirection: "row", justifyContent: "flex-end", gap: 10, marginTop: 10 },
   button: { padding: 10, borderRadius: 5 },checkbox: {
     marginRight: 10,
