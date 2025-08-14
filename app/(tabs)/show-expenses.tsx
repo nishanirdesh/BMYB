@@ -1,19 +1,20 @@
-import { Picker } from "@react-native-picker/picker";
+
 import { useRouter } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
 import {
-    ActivityIndicator,
-    Alert,
-    Button,
-    FlatList,
-    Modal,
-    RefreshControl,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  ActivityIndicator,
+  Alert,
+  Button,
+  FlatList,
+  Modal,
+  RefreshControl,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
 
 const SHEET_API_URL = "https://script.google.com/macros/s/AKfycby5gAEj7hjTYmPwO66uSPgNWnovT9y_HZbqmVSG9Cz2Ity1Zdn8Gk3jCwalcHBpHfP2/exec";
 
@@ -30,6 +31,12 @@ type ExpenseItem = {
 };
 
 export default function TableExpenseScreen() {
+  // ✅ Dropdown states
+  const [monthOpen, setMonthOpen] = useState(false);
+  const [yearOpen, setYearOpen] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState<number | null>(new Date().getMonth() + 1);
+  const [selectedYear, setSelectedYear] = useState<number | null>(new Date().getFullYear());
+
     const router = useRouter();
   const [expense, setExpense] = useState("");
   const [amount, setAmount] = useState("");
@@ -38,8 +45,6 @@ export default function TableExpenseScreen() {
   const [expenses, setExpenses] = useState<ExpenseItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [editModalVisible, setEditModalVisible] = useState(false);
   const [editingItem, setEditingItem] = useState<ExpenseItem | null>(null);
 
@@ -128,28 +133,34 @@ return (
     <View style={styles.filterCard}>
       <View style={styles.pickerWrapper}>
         <Text style={styles.filterLabel}>Month</Text>
-        <Picker
-          selectedValue={selectedMonth}
-          style={styles.picker}
-          onValueChange={(val) => setSelectedMonth(Number(val))}
-        >
-          {monthNames.map((name, i) => (
-            <Picker.Item key={i} label={name} value={i + 1} />
-          ))}
-        </Picker>
+        <DropDownPicker
+          open={monthOpen}
+          value={selectedMonth}
+          items={monthNames.map((name, i) => ({
+            label: name,
+            value: i + 1
+          }))}
+          setOpen={setMonthOpen}
+          setValue={setSelectedMonth}
+          placeholder="Select Month"
+          style={styles.dropdown}
+        />
       </View>
 
       <View style={styles.pickerWrapper}>
         <Text style={styles.filterLabel}>Year</Text>
-        <Picker
-          selectedValue={selectedYear}
-          style={styles.picker}
-          onValueChange={(val) => setSelectedYear(Number(val))}
-        >
-          {[2023, 2024, 2025].map((year) => (
-            <Picker.Item key={year} label={`${year}`} value={year} />
-          ))}
-        </Picker>
+       <DropDownPicker
+          open={yearOpen}
+          value={selectedYear}
+          items={[2023, 2024, 2025].map((year) => ({
+            label: `${year}`,
+            value: year
+          }))}
+          setOpen={setYearOpen}
+          setValue={setSelectedYear}
+          placeholder="Select Year"
+          style={styles.dropdown}
+        />
       </View>
     </View>
 
@@ -249,7 +260,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: "#333",
-  },
+  },dropdown: {
+  borderColor: "#ccc",
+  minHeight: 40,
+},
   addButton: {
     backgroundColor: "#007bff",
     paddingVertical: 8,

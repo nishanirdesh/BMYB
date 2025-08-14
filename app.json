@@ -1,13 +1,12 @@
 {
   "expo": {
     "name": "Budget Tracker",
-    "slug": "budget-tracker-app",
+    "slug": "bmyb",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "budgettrackerapp",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": false,
     "android": {
       "package": "com.bhuiyash.budgettrackerapp",
       "adaptiveIcon": {
@@ -39,8 +38,10 @@
     },
     "extra": {
       "eas": {
-        "projectId": "fd7bbd90-9435-4be8-b0a3-3305f7830af7"
-      }
-    }
+        "projectId": "a41ba3dc-7751-4c71-af80-7363e1809e31"
+      },
+      "router": {}
+    },
+    "owner": "nishanirdesh-2"
   }
 }
