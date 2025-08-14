@@ -1,0 +1,1 @@
+export const sheet_api_url="https://script.google.com/macros/s/AKfycbzCZEE_E1je6sDxiX1G-IHeziCQJIh1R43CdXcU2aohap8rI9jymJRQwnFn3ArmSH_0/exec";//change
