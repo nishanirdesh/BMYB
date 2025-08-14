@@ -263,6 +263,7 @@ useEffect(() => {
 
       <Text style={styles.label}>Select Fund Type:</Text>
       <DropDownPicker
+      
         open={typeOpen}
         value={type}
         items={typeItems}
@@ -317,7 +318,7 @@ useEffect(() => {
             onPress={() => handleEdit(item)}
             style={[
               styles.row,
-              { backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#e6f2ff" },
+              { backgroundColor: index % 2 === 0 ? "#b19d9dff" : "#53cf53ff" },
             ]}
           >
             <Text style={styles.cell}>{item.sno}</Text>
@@ -372,6 +373,7 @@ useEffect(() => {
 }
 
 const styles = StyleSheet.create({
+  
   headerBar: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -427,6 +429,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 6,
     marginTop: 5,
+    color: "#000", // text color
   },
   row: {
     flexDirection: "row",
@@ -442,5 +445,6 @@ const styles = StyleSheet.create({
   },
   cell: {
     flex: 1,
+    color: "#0a0606ff",
   },
 });
