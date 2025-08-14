@@ -1,4 +1,3 @@
-import DropDownPicker from "react-native-dropdown-picker";
 import { useRouter } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
 import {
@@ -14,9 +13,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
 
 const SHEET_API_URL =
-  "https://script.google.com/macros/s/AKfycby5gAEj7hjTYmPwO66uSPgNWnovT9y_HZbqmVSG9Cz2Ity1Zdn8Gk3jCwalcHBpHfP2/exec";
+  "https://script.google.com/macros/s/AKfycbzWVbPQIx2TTvQtm5R96XPGaBnt36r_4Nh9M-e-7QX2p7dOwQZ7we5IjHzcTcM_Cnd8VA/exec";
 
 function formatDate(isoDate: string): string {
   const date = new Date(isoDate);
@@ -141,7 +141,7 @@ export default function TableExpenseScreen() {
         <Text style={styles.pageTitle}>BMYB Members</Text>
         <TouchableOpacity
           style={styles.addButton}
-          onPress={() => router.push("/add-expenses")}
+          onPress={() => router.push("/add-monthly")}
         >
           <Text style={styles.addButtonText}>+ Add Expenses</Text>
         </TouchableOpacity>
